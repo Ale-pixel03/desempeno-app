@@ -1,0 +1,50 @@
+<div class="login-bg d-flex justify-content-center align-items-center p-3">
+    <div class="card border-0 shadow-lg rounded-4" style="width: 100%; max-width: 420px;">
+        <div class="card-body p-4 p-sm-5">
+            <div class="text-center mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary bg-opacity-10 text-primary mb-3"
+                    style="width: 64px; height: 64px;">
+                    <i class="bi bi-twitter fs-2"></i>
+                </div>
+                <h3 class="fw-bold mb-1">Bienvenido a SocialSHD</h3>
+                <p class="text-muted small">Inicia sesión para ver y publicar en el muro</p>
+            </div>
+
+            <div *ngIf="errorMessage" class="alert alert-danger d-flex align-items-center py-2 small rounded-3"
+                role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                <div>{{ errorMessage }}</div>
+            </div>
+
+            <form (ngSubmit)="onLogin()">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small text-secondary">Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0 text-muted">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input type="text" class="form-control bg-light border-start-0 ps-0" [(ngModel)]="username"
+                            name="username" placeholder="Ingresa tu usuario" required />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold small text-secondary">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0 text-muted">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" class="form-control bg-light border-start-0 ps-0" [(ngModel)]="password"
+                            name="password" placeholder="••••••••" required />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold rounded-pill shadow-sm"
+                    [disabled]="loading">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                    {{ loading ? 'Verificando...' : 'Iniciar Sesión' }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
